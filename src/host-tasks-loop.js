@@ -169,7 +169,8 @@ export function startTaskCompletionLoop(networkManager) {
 
                         // If this task came from a generic command, auto-upgrade to best available task
                         const fromGeneric =
-                            player.activeTask.meta && player.activeTask.meta.fromGenericCommand;
+                            player.activeTask.meta &&
+                            player.activeTask.meta.fromGenericCommand === true;
 
                         if (fromGeneric && owningSkill) {
                             const totalXp = computeSkillXp(player, skillId);

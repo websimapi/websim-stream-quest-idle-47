@@ -49,8 +49,9 @@ export async function ensureActiveEnergyAndStartTask(
         taskId: targetTask.id,
         startTime: now,
         duration: targetTask.duration,
-        // Mark whether this came from a generic command so we can auto-upgrade
-        meta: { fromGenericCommand }
+        // Mark whether this came from a generic command so we can auto-upgrade.
+        // For specific commands we clear meta entirely so no old generic flag lingers.
+        meta: fromGenericCommand ? { fromGenericCommand: true } : null
     };
     player.pausedTask = null;
     player.manualStop = false;
